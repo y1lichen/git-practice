@@ -45,7 +45,7 @@ git cat-file -p <hash value of tree>
 - .git/refs/heads/中會新增一個以新branch為名的文件，記錄該branch所指的commit的hash value
 ### git checkout:
 - HEAD file所指的branch會更新
-![git切分支後HEAD file內容會改變](./git/content_of_head.png)
+![git切分支後HEAD file內容會改變](./images/content_of_head.png)
 ### git merge:
 - .git/refs/heads/<branch name>文件會指向merge進來的新commit
 ### git pull:
