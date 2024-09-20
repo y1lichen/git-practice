@@ -22,7 +22,24 @@ head可以指向某個branch或commit。如果head指向branch時，代表指向
 - refs存branch、tag
 ### git add <file>:
 - 文件內容存為blob，會存到objects檔案夾內
-- index file打開是亂碼，無法實際看內容。依照網路上的資料index記錄的是文件blob的hash value。
+- 同內容的檔案會有同樣的hash value
+
+#### 怎麼證明同內容的檔案會有同樣的hash value？
+查看前一次commit的hash value
+```
+git log -1
+```
+查看前一次commit的內容
+```
+git cat-file -p <commit hash value>
+```
+查看前一次commit內容中tree中的blob
+```
+git cat-file -p <tree hash value>
+```
+以下為test.txt、test1.txt的hash value，兩者的內容同為"test"
+![./images/hash_of_same_content.png]
+
 ### git commit:
 - 生成commit object，會存到objects檔案夾內
 - COMMIT_EDITMSG存前一個commit message
