@@ -11,7 +11,7 @@ branch指向不同commit，每一個branch都是獨立的路徑，讓開發者�
 5. head
 head可以指向某個branch或commit。如果head指向branch時，代表指向來是某個branch的最新commit；若直接指向某個commit，代表處在detached狀態，表示目前操作不在任何branch上。
 
-# 紀錄在 git repo 操作過程中，.git 檔案夾裡的變化
+# 二、紀錄在 git repo 操作過程中，.git 檔案夾裡的變化
 
 ### git init:
 - 生成.git檔案夾
@@ -58,7 +58,7 @@ git cat-file -p <hash value of tree>
 - .git/refs/heads/<branch name>文件會指向merge進來的新commit
 ### git pull:
 - 遠端的變更會合併到本地，新的commit會存到objects
-# 二、commit message 應該怎麼寫比較好？應該有什麼 style 嗎？
+# 三、commit message 應該怎麼寫比較好？應該有什麼 style 嗎？
 commit message沒有一定要怎麼寫比較好，而每個團隊可能也會有自己習慣的style。
 過去我自己的習慣是會在commit message說明做了什麼更動並標註相關的issue。 
  
