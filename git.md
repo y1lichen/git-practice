@@ -1,4 +1,4 @@
-# git相關名詞說明
+# 一、git相關名詞說明
 1. blob
 blob是git用來儲存文件內容的單位。每一個文件的內容都以一個blob被儲存，而每一個blob都有一個（sha-1）的hash value。blob只記錄文件內容並不記錄檔名等額外資訊，因此兩個同內容的檔案會有相同的blob。
 2. tree
@@ -49,7 +49,7 @@ git cat-file -p <hash value of tree>
 - .git/refs/heads/<branch name>文件會指向merge進來的新commit
 ### git pull:
 - 遠端的變更會合併到本地，新的commit會存到objects
-# commit message 應該怎麼寫比較好？應該有什麼 style 嗎？
+# 二、commit message 應該怎麼寫比較好？應該有什麼 style 嗎？
 commit message沒有一定要怎麼寫比較好，而每個團隊可能也會有自己習慣的style。
 過去我自己的習慣是會在commit message說明做了什麼更動並標註相關的issue。 
  
