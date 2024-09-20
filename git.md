@@ -44,7 +44,7 @@ git cat-file -p <hash value of tree>
 ### git branch:
 - .git/refs/heads/中會新增一個以新branch為名的文件，記錄該branch所指的commit的hash value
 
-3建立新的branch前.git/refs/heads/中：
+建立新的branch前.git/refs/heads/中：
 
 ![before](./images/before_create_new_branch.png)
 
