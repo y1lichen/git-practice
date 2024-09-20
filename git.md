@@ -46,6 +46,7 @@ git cat-file -p <hash value of tree>
 建立新的branch前.git/refs/heads/中：
 
 ![before](./images/before_create_new_branch.png)
+
 建立名叫test1的branch後.git/refs/heads/中：
 
 ![after](./images/after_create_new_branch.png)
