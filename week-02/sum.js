@@ -28,9 +28,10 @@ function sumN(n) {
 }
 
 // 第二種寫法（recursive）
+// 如果n太大可能會有Maximum call stack size exceeded的問題
 function sumN1(n) {
-    if (n === 0) {
-        return 0
+    if (n <= 1) {
+        return n
     }
     return n + sumN1(n - 1)
 }
@@ -47,3 +48,17 @@ console.log(sum3([1, 5, 3, 2]));
 console.log(sumN(5)); // 15
 console.log(sumN1(5));
 console.log(sumN2(5));
+
+// 比較sum1、sum3的效能
+console.log("compare sum1 & sum3");
+let arr = Array.from(Array(100).keys());
+console.time('sum1');
+for (let i = 0; i < 100000; i++) {
+    sum(arr);
+}
+console.timeEnd('sum1');
+console.time('sum3');
+for (let i = 0; i < 100000; i++) {
+    sum3(arr)
+}
+console.timeEnd('sum3');
