@@ -10,6 +10,7 @@ stack.print(); // [5, 8]
 
 // 應該還要做哪些測試，以驗證自己開發的 stack 是沒有問題的？
 console.log(stack.size()); // 2
+console.log(stack.isEmpty()); // false
 console.log(stack.peek()); // 8
 console.log(stack.pop()); // 8
 console.log(stack.isEmpty());
