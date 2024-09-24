@@ -36,7 +36,7 @@ function sumN1(n) {
     return n + sumN1(n - 1)
 }
 
-// 第三種寫法（結何前面sum of array的寫法）
+// 第三種寫法（結合前面sum of array的寫法）
 function sumN2(n) {
     let arr = Array.from(Array(n + 1).keys()); // 產出一個[0, 1, 2..,n]的array
     return sum(arr);
