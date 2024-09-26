@@ -16,11 +16,19 @@ export default class Stack {
 
   // 移除並回傳 stack 頂部的元素
   pop() {
+    if (this.#items.length === 0) {
+      console.log("stack is already empty");
+      return;
+    }
     return this.#items.pop();
   }
 
   // 回傳 stack 頂部的元素，但不移除它
   peek() {
+    if (this.#items.length === 0) {
+      console.log("stack is empty");
+      return;
+    }
     return this.#items[this.#items.length - 1];
   }
 
