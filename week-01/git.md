@@ -18,7 +18,7 @@ head可以指向某個branch或commit。如果head指向branch時，代表指向
 - HEAD file中存目前所指的branch
 - objects檔案夾存blob、tree、commit等物件
 - logs存操作日誌
-![logs.png](./images/log.png)
+![logs.png](../images/log.png)
 - refs存branch、tag
 ### git add <file>:
 - 文件內容存為blob，會存到objects檔案夾內
@@ -46,14 +46,14 @@ git cat-file -p <hash value of tree>
 
 建立新的branch前.git/refs/heads/中：
 
-![before](./images/before_create_new_branch.png)
+![before](../images/before_create_new_branch.png)
 
 建立名叫test1的branch後.git/refs/heads/中：
 
-![after](./images/after_create_new_branch.png)
+![after](../images/after_create_new_branch.png)
 ### git checkout:
 - HEAD file所指的branch會更新
-![git切分支後HEAD file內容會改變](./images/content_of_head.png)
+![git切分支後HEAD file內容會改變](../images/content_of_head.png)
 ### git merge:
 - .git/refs/heads/<branch name>文件會指向merge進來的新commit
 ### git pull:
