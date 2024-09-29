@@ -1,12 +1,13 @@
 # 什麼是 AWS Region, AZ (availability zones)
 
 ## 1. Region（區域）
-Region是一個實際的地理區域，例如：東京、香港。一個Region中會有多個Availability Zones。
+- Region是一個實際的地理區域，例如：東京、香港。
+- 一個Region中會有多個Availability Zones。
 
 ## 2. Availability Zones（可用區域）
-每個AZ是一個可獨立運作的資料中心，有獨立的備用電源、散熱等設施，提高容錯率。
-僅管AZ在同一個區域內（100公里內），兩個AZ仍相隔數公里。藉由低延遲網路連結AZ可對AZ進行備份，降低系統遇到天災人禍時shutdown的風險。
-
+- 每個AZ是一個可獨立運作的資料中心，有獨立的備用電源、散熱等設施，提高容錯率和災害復原能力。
+- 僅管AZ在同一個區域內（100公里內），兩個AZ仍相隔數公里。藉由低延遲網路連結AZ可對AZ進行備份，降低系統遇到天災人禍時shutdown的風險。
+- 每個AZ有自己的identifier，如：use1-az1、usw1-az1
 ---
 
 ## 3. Local Zones（本地區域）
