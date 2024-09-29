@@ -1,4 +1,4 @@
-# 建立 Express 專案
+# 一、建立 Express 專案
 
 1. npm init 
 
@@ -20,12 +20,13 @@ package-lock.json記錄package的dependencies和sub-dependencies。
 node_modules裡放的是安裝的套件。以 npm install express 這個指令來說，除了express還包含其他依賴套件。
 
 ---
+# 二、問題
 
-# package.json 中的 dependencies 與 devDependencies 分別是什麼
+## package.json 中的 dependencies 與 devDependencies 分別是什麼
 根據[npm Docs](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file)，dependencies是部署上線時需要的套件；devDependencies是在本地開發測試時需要的套件。
 
 若是要安裝devDependencies的套件，可使用`npm install <套件名> --save-dev`或`npm i <套件名> -D`安裝
-# package.json 中的 scripts 這個區塊怎麼用？
+## package.json 中的 scripts 這個區塊怎麼用？
 使用scripts可以預先設定指令，指令的名稱可以自行設置。例如：
 ```
 "scripts": {
@@ -36,26 +37,28 @@ node_modules裡放的是安裝的套件。以 npm install express 這個指令�
 執行`npm start`時會自動執行`node app.js`。 
 需特別注意的是除了某些預設指令可以直接執行npm <指令名>，如：start、test，其它的指令須使用`npm run <指令名>`。
 
-# Port number 要怎麼以環境變數來設定？
+## Port number 要怎麼以環境變數來設定？
 使用`var port = process.env.PORT`，執行app.js要執行`PORT=4444 node app.js`。 
 
 然而，也可以利用[dotenv](https://www.npmjs.com/package/@mcrowe/gotenv)。在app.js加入`require("dotenv").config();`，並且在.env中設定PORT，即可用`process.env.PORT`讀取.env設定的PORT。
-# 關於哪些檔案應該要被放上 github repo 這個問題，描述看看為什麼你選擇上傳某些檔案、選擇不上傳某些檔案，決策的要素是什麼？
-## 1. 需要上傳的檔案
+### 關於哪些檔案應該要被放上 github repo 這個問題，描述看看為什麼你選擇上傳某些檔案、選擇不上傳某些檔案，決策的要素是什麼？
+
+1. 需要上傳的檔案
 - 需要所有人同步的檔案，如：程式碼、package.json。package.json需要放上repo這麼一來，才能確保所有人使用的是同版本的依賴。
-## 2. 不需要上傳的檔案
+
+2. 不需要上傳的檔案
 - 一些含有像是資料庫密碼、jwt的密鑰等機密資料的檔案，如：.env。
 - 過大的檔案
 - 一些只有在本地才用得到的檔案，如：.DS_Store、.Spotlight-V100
 - 其他人不一定要同步的檔案，如：node_modules。因為上傳了package.json，其他人只要執行`npm install`就可以下載同樣的依賴套件，生成同樣的package.json。
 
-# 範例程式中用 require，但上週的 Stack 是用 import/export，這兩種分別是 JavaScript 引用模組的兩種方式: CJS vs ESM，這兩者分別怎麼用？
+## 範例程式中用 require，但上週的 Stack 是用 import/export，這兩種分別是 JavaScript 引用模組的兩種方式: CJS vs ESM，這兩者分別怎麼用？
 
-# localhost 是什麼？
+## localhost 是什麼？
 localhost是本地主機，代表的是127.0.0.1的IP位址。
-# curl 是什麼？查查看怎麼用 curl 來測試網路連線？常用參數有哪些？
+## curl 是什麼？查查看怎麼用 curl 來測試網路連線？常用參數有哪些？
 curl能用來存取網路資源，支援FTP、FTPS、HTTP、HTTPS、SMTP等。
-## 如果要測網路連線
+### 如果要測網路連線
 可以隨便使用`curl http://google.com`來看是否有連網，如果沒連上會出現`curl: (6) Could not resolve host: google.com`。要注意的是如果call了一個斷線的服務也會有一樣的結果，所以最好是call像是google這種穩定的網站。
 
 curl也能用來測速，指令如下：
@@ -69,7 +72,7 @@ https://tw.yahoo.com && echo
 - time_starttransfer: 伺服器return的第一個字節的時間
 - time_total: 整個請求的花費時間
 
-## 常用參數
+### 常用參數
 1. -X
 
 -X用來指定要使用的 HTTP 方法
