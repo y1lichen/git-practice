@@ -22,7 +22,20 @@ node_modules裡放的是安裝的套件。以 npm install express 這個指令�
 ---
 
 # package.json 中的 dependencies 與 devDependencies 分別是什麼
+根據[npm Docs](https://docs.npmjs.com/specifying-dependencies-and-devdependencies-in-a-package-json-file)，dependencies是部署上線時需要的套件；devDependencies是在本地開發測試時需要的套件。
+
+若是要安裝devDependencies的套件，可使用`npm install <套件名> --save-dev`或`npm i <套件名> -D`安裝
 # package.json 中的 scripts 這個區塊怎麼用？
+使用scripts可以預先設定指令，指令的名稱可以自行設置。例如：
+```
+"scripts": {
+    "start": "node app.js",
+    "dewdewdee": "node app.js"
+  },
+```
+執行`npm start`時會自動執行`node app.js`。 
+需特別注意的是除了某些預設指令可以直接執行npm <指令名>，如：start、test，其它的指令須使用`npm run <指令名>`。
+
 # Port number 要怎麼以環境變數來設定？
 使用`var port = process.env.PORT`，執行app.js要執行`PORT=4444 node app.js`。 
 
