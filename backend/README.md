@@ -53,7 +53,39 @@ node_modules裡放的是安裝的套件。以 npm install express 這個指令�
 - 其他人可以從別的地方取得同樣的檔案，如：node_modules。因為上傳了package.json，其他人只要執行`npm install`就可以下載同樣的依賴套件，生成同樣的package.json。
 
 ## 範例程式中用 require，但上週的 Stack 是用 import/export，這兩種分別是 JavaScript 引用模組的兩種方式: CJS vs ESM，這兩者分別怎麼用？
+#### 1. CJS
+CJS全名是CommonJS是node.js的模塊系統，使用require、module.export引入和導出。
 
+使用範例：
+```
+// circle.js
+exports.area = (r) => 3.14 * r ** 2;
+
+// main.js
+const circle = require('./circle.js');
+console.log(`The area of a circle of radius 4 is ${circle.area(4)}`);
+```
+#### 2. ESM
+ESM全名是ECMAScript Modules，從ES6開始成為javascript的模組系統，使用import、export引入和導出。
+ESM除了在現代的瀏覽器有支援外，也可以在node.js使用。
+
+使用範例：
+```
+// circle.js
+export function area(r) {
+    return 3.14 * r ** 2;
+}
+// main.js
+import {area} from './circle.js';
+console.log(`The area of a circle of radius 4 is ${area(4)}`);
+```
+
+#### 3. CJS、ESM的比較
+- ESM在可以在現代瀏覽器和node.js使用；CJS主要用在node.js。
+- CJS的引入模組的方法require()是同步加載，也就是後段的程式碼要等require執行完才能執行。如果要引入很多模組，可能會導致執行速度變慢。
+- ESM是靜態載入，在編譯時就已提前載入模組了。
+- ESM export的是同一個引用，模組內的變化會影響到引入模組的地方；CJS export的則是拷貝，因此模組內的變化不會影響到引入模組的地方。實驗可見[week-03中的test資料夾](../week-03/test)
+- 文件檔名為.mjs時以ESM載入；檔名為.cjs時以CJS載入。.js預設是以CJS載入，但在套件package.json設置`"type": "module"`可以ESM載入。
 ## localhost 是什麼？
 localhost是本地主機，代表的是127.0.0.1的IP位址。
 ## curl 是什麼？查查看怎麼用 curl 來測試網路連線？常用參數有哪些？
@@ -126,3 +158,4 @@ curl --cookie "name=Jack" http://www.example.com
 [Wikipedia](https://zh.wikipedia.org/zh-tw/CURL)
 [萬用的-curl-模擬各種訪問狀況、檢測訪問速度](https://shazi.info/萬用的-curl-模擬各種訪問狀況、檢測訪問速度/)
 [IBM](https://www.ibm.com/docs/zh-tw/flashsystem-5x00/8.5.x?topic=svra-usage-examples-in-curl)
+[CJS vs ESM](https://vocus.cc/article/649cc0e0fd89780001a7d34d)
