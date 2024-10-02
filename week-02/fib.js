@@ -1,12 +1,8 @@
 // 這個寫法不太好。如：算fib(3)時，fib(4) = fib(3)+fib(2)
 // 又fib(3) = fib(2) + fib(1)，fib(2)就要計算兩次。
 function fib(n) {
-  if (n == 0) {
-    // fib(0)=0
-    return 0
-  } else if (n == 1) {
-    // fib(1)=1
-    return 1
+  if (n == 0 || n == 1) {
+    return n;
   }
   // n > 1時，fib(n)=fib(n-1)+fib(n-2)
   return fib(n - 1) + fib(n - 2)
