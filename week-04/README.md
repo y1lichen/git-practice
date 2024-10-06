@@ -65,6 +65,9 @@ server {
 ## 11. 列出完成本作業時參考的資料
 
 [如何設定inbound](https://stackoverflow.com/questions/70285350/how-to-open-port-80-on-aws-ec2) 
+
 [在linux上安裝nginx](https://medium.com/@B369/在linux-安裝-nginx-web-server-fed26c16a594) 
+
 [Nginx是什麼？](https://www.explainthis.io/zh-hant/swe/why-nginx) 
+
 [正向代理跟反向代理](https://www.jyt0532.com/2019/11/18/proxy-reverse-proxy/)
