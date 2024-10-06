@@ -57,11 +57,22 @@ server {
 - `proxy_set_header Host $host;`原請求中的 Host 標頭保留並傳給後端，以判斷請求來源
 - `proxy_cache_bypass $http_upgrade;為了確保某些及時通信，如 socket 的請求能夠順利升級
 ## 7. Security Group 是什麼？用途為何？有什麼設定原則嗎？
+
+Security Group 是安全規則，功能類似防火牆，可以控制進出 EC2 instance 的網路流量。
+Security Group 可以設定哪些特定的 IP 地址可以連接到 EC2，或是外部電腦可以由哪些 port 連接到 EC2。
+
+在[AWS官網](https://docs.aws.amazon.com/zh_tw/vpc/latest/userguide/vpc-security-groups.html)有說明 Security Group 的最佳實務： 
+
+- 不要讓太多人（IAM）建立及修改安全性群組
+- 盡量不要有太多安全群組，以降低發生錯誤的風險
+- 不要開啟太大的port range
+- 僅授權特定 IP 位址範圍可以 SSH、RDP 連接
+
 ## 8. 什麼是 sudo? 為什麼有的時候需要加上 sudo，有時候不用？
 
 #### 8.1 什麼是 sudo? 
 
-sudo指令使得在當次執行指令時可以使用root權限執行。若是沒有sudo，就得以admin或root帳號登入電腦才能執行需要權限的指令。相較於登入admin帳號，使用sudo而只給予一次指令root權限更為安全。
+sudo 指令使得在當次執行指令時可以使用 root 權限執行。若是沒有 sudo，就得以 admin 或 root 帳號登入電腦才能執行需要權限的指令。相較於登入 admin 帳號，使用 sudo 而只給予一次指令 root 權限更為安全。
 #### 8.2 為什麼有的時候需要加上 sudo，有時候不用？ 
 
 僅有在修改系統層面的設定或訪問受限的資源時會需要 sudo，例如：安裝套件`sudo apt install <package>`、修改設定檔`sudo vim /etc/nginx/nginx.conf`。
