@@ -25,10 +25,37 @@ Nginx 能夠自動的將 Client 的 Request 分送到不同 Application Server �
 Client 發出 Request ，Nginx 會將 Request 的資訊做 hash。如果 hash key 在記憶體中 Nginx 就可以直接索引檔案，而不用向 Application server索取檔案位置。
 
 ## 4. pm2 套件是什麼？有什麼用處？
-    1. 如果不是使用 pm2，那就告訴我你是用哪一個、這個工具的用途，以及，你為什麼這樣選擇
+
+pm2是用來管理node應用程式的管理工具。
+有以下用處：
+- node 服務 crash 後，自動重啟
+- 在多核cpu上，可以開啟多個node應用程式，達到負載平衡的效果
+- 提供監控和日誌管理
+
+有關pm2的操作見[使用 pm2 進行 node 服務管理](https://blog.jsy.tw/2661/pm2-node-service-manager/)、[https://ithelp.ithome.com.tw/articles/10220480](https://ithelp.ithome.com.tw/articles/10220480)
 ## 5. 步驟 9 中提到的 `proxy` 是什麼意思？為什麼要透過 Nginx 來 `proxy` 到 Express 開發的 Web Server?
-    1. 提示 `Reverse proxy` vs `Forward Proxy`
+Proxy 網路代理，是一種網路服務，允許一個網路終端透過這個服務連上另一個網路網路終端。Proxy 可分為 Forward proxy 和 Reverse proxy
+
+Forward proxy: 客戶端藉 proxy server 向伺服器發送請求。在這個情況下，server並不知道請求實際是哪發送的，可以保護使用者。
+
+Reverse proxy: 伺服器藉由 proxy server 向客戶端發送回應。使用反向代理的話網站永遠不需要顯示後端伺服器的 IP，使得伺服器難以成為駭客攻搫對象。當有多個後端伺服器時，可藉由反向代理把請求分流到不同伺服器，達到負載平衡。
 ## 6. 在 readme 中提供步驟 9 的 Nginx 設定檔
+```
+server {
+    listen 80;
+
+    location / {
+                    proxy_pass http://localhost:3000;
+                    proxy_http_version 1.1;
+                    proxy_set_header Host $host;
+                    proxy_cache_bypass $http_upgrade;
+            }
+}
+```
+- `proxy_pass http://localhost:3000;`指要把request導到localhost的3000 port
+- `proxy_http_version 1.1;`指定使用 HTTP 1.1進行通訊。HTTP支援keep alive技久連接，可減少連線成本。詳見[HTTP/1、HTTP/1.1 和 HTTP/2 的區別](https://www.explainthis.io/zh-hant/swe/http1.0-http1.1-http2.0-difference)
+- `proxy_set_header Host $host;`原請求中的 Host 標頭保留並傳給後端，以判斷請求來源
+- `proxy_cache_bypass $http_upgrade;為了確保某些及時通信，如 socket 的請求能夠順利升級
 ## 7. Security Group 是什麼？用途為何？有什麼設定原則嗎？
 ## 8. 什麼是 sudo? 為什麼有的時候需要加上 sudo，有時候不用？
 ## 9. Nginx 的 Log 檔案在哪裡？你怎麼找到的？怎麼看 Nginx 的 Log？
@@ -40,3 +67,4 @@ Client 發出 Request ，Nginx 會將 Request 的資訊做 hash。如果 hash ke
 [如何設定inbound](https://stackoverflow.com/questions/70285350/how-to-open-port-80-on-aws-ec2)
 [在linux上安裝nginx](https://medium.com/@B369/在linux-安裝-nginx-web-server-fed26c16a594)
 [Nginx是什麼？](https://www.explainthis.io/zh-hant/swe/why-nginx)
+[正向代理跟反向代理](https://www.jyt0532.com/2019/11/18/proxy-reverse-proxy/)
