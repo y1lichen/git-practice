@@ -58,7 +58,22 @@ server {
 - `proxy_cache_bypass $http_upgrade;為了確保某些及時通信，如 socket 的請求能夠順利升級
 ## 7. Security Group 是什麼？用途為何？有什麼設定原則嗎？
 ## 8. 什麼是 sudo? 為什麼有的時候需要加上 sudo，有時候不用？
-## 9. Nginx 的 Log 檔案在哪裡？你怎麼找到的？怎麼看 Nginx 的 Log？
+
+#### 8.1 什麼是 sudo? 
+
+sudo指令使得在當次執行指令時可以使用root權限執行。若是沒有sudo，就得以admin或root帳號登入電腦才能執行需要權限的指令。相較於登入admin帳號，使用sudo而只給予一次指令root權限更為安全。
+#### 8.2 為什麼有的時候需要加上 sudo，有時候不用？ 
+
+僅有在修改系統層面的設定或訪問受限的資源時會需要 sudo，例如：安裝套件`sudo apt install <package>`、修改設定檔`sudo vim /etc/nginx/nginx.conf`。
+
+## 9. Nginx 的 Log 檔案在哪裡？你怎麼找到的？怎麼看 Nginx 的 Log？ 
+
+nginx的日誌可分為 access log、error log，在`/etc/nginx/nginx.conf`可看到： 
+- access log 的路徑為`/var/log/nginx/access.log`
+- error log 的路徑為`/var/log/nginx/error.log` 
+
+可以使用`tail -<筆數> /var/log/nginx/access.log`查看最後幾筆access log。
+
 ## 10. 其他你在過程中遭遇的問題，有找到解答就記錄下來，沒有可以把問題放著，下次上課討論。如果沒有遇到任何問題，也可以回答「無」
 
 [ssh連線不上時在stackoverflow參考這](https://stackoverflow.com/a/25954437)
@@ -70,4 +85,6 @@ server {
 
 [Nginx是什麼？](https://www.explainthis.io/zh-hant/swe/why-nginx) 
 
-[正向代理跟反向代理](https://www.jyt0532.com/2019/11/18/proxy-reverse-proxy/)
+[正向代理跟反向代理](https://www.jyt0532.com/2019/11/18/proxy-reverse-proxy/) 
+
+[sudo的使用](https://ithelp.ithome.com.tw/m/articles/10220102)
