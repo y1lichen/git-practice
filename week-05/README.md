@@ -2,8 +2,14 @@
 我的網址是[https://y1lichen.urcafemate.me](https://y1lichen.urcafemate.me)
 ## 2. 你在哪裡購買網域的
 [namecheap](https://www.namecheap.com)
+
 ## 3. DNS 的 A record 是什麼？
+
+A Record 用來將網域名稱解析為對應的 IPv4 地址。舉例來說，使用者查找 www.example.com， DNS 利用 A record 找到到對應的伺服器 IPv4 地址192.0.2.1。
+
 ## 4. DNS 的 NS record 是什麼？
+
+NS 代表 name server，用來指定某個網域由哪一台 Name Server 進行解析。當使用者向 DNS 查詢某個 IP 地址時，DNS 會根據這個網域的 NS record 將查詢導向這個網域所指定的名稱伺服器做下一步解析。
 ## 5. Domain Name vs FQDN vs URL 這三者分別為何？
 #### Domain Name
 
