@@ -1,8 +1,8 @@
 ## 1. 在 Readme 中提供 instance 的 public IP，我會連線過去檢查
 
-public ip: 3.27.110.23
+public ip: 13.236.191.85
 
-連結：[link](http://3.27.110.23)
+連結：[link](http://13.236.191.85)
 
 ## 2. 什麼是 instance type?
 
