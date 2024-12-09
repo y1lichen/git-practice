@@ -2,7 +2,7 @@
 
 public ip: 13.236.191.85
 
-連結：[link](http://13.236.191.85)
+連結：[link](https://13.236.191.85)
 
 ## 2. 什麼是 instance type?
 
